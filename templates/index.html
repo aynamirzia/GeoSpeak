@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gemini Translator (Text & PDF)</title>
+</head>
+<body>
+    <h1>Gemini Translator</h1>
+
+    <!-- Text Translation Form -->
+    <form method="POST" enctype="multipart/form-data">
+        <input type="text" name="message" placeholder="Enter text">
+        <select name="target_lang">
+            <option value="Urdu" {% if target_language == 'Urdu' %}selected{% endif %}>Urdu</option>
+            <option value="English" {% if target_language == 'English' %}selected{% endif %}>English</option>
+            <option value="Arabic" {% if target_language == 'Arabic' %}selected{% endif %}>Arabic</option>
+            <option value="French" {% if target_language == 'French' %}selected{% endif %}>French</option>
+            <option value="Spanish" {% if target_language == 'Spanish' %}selected{% endif %}>Spanish</option>
+        </select>
+        <button type="submit">Translate Text</button>
+    </form>
+
+    <hr>
+
+    <!-- PDF Translation Form -->
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="pdf_file" accept=".pdf" required>
+        <select name="target_lang">
+            <option value="Urdu" {% if target_language == 'Urdu' %}selected{% endif %}>Urdu</option>
+            <option value="English" {% if target_language == 'English' %}selected{% endif %}>English</option>
+            <option value="Arabic" {% if target_language == 'Arabic' %}selected{% endif %}>Arabic</option>
+            <option value="French" {% if target_language == 'French' %}selected{% endif %}>French</option>
+            <option value="Spanish" {% if target_language == 'Spanish' %}selected{% endif %}>Spanish</option>
+        </select>
+        <button type="submit">Translate PDF</button>
+    </form>
+
+    {% if user_input %}
+        <h3>Original Content Preview:</h3>
+        <p>{{ user_input }}</p>
+        <h3>Translated Content:</h3>
+        <p>{{ translated_text }}</p>
+    {% endif %}
+</body>
+</html>
